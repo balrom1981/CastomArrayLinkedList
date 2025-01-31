@@ -52,6 +52,9 @@ public class MyArrayList<T> implements MyListInterface<T> {
 
     @Override
     public T getElement(int index) {
+        if (index > numberOfElements || index < 0) {
+            throw new IndexOutOfBoundsException("Index is bigger/less than length of array");
+        }
         return (T) array[index];
     }
 
@@ -140,5 +143,17 @@ public class MyArrayList<T> implements MyListInterface<T> {
         System.arraycopy(array, 0, newArray, 0, index);
         System.arraycopy(array, index + 1, newArray, index, size - index - 1);
         array = (T[]) newArray;
+    }
+
+    public T[] getArray() {
+        return array;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getNumberOfElements() {
+        return numberOfElements;
     }
 }
