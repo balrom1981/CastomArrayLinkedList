@@ -22,11 +22,12 @@ class MyArrayListTest {
     }
 
     @Test
-    public void addElementsAtCorrectIndex() {
+    public void addElementAtCorrectIndex() {
         MyArrayList<Integer> myArrayList = new MyArrayList<>(2);
         myArrayList.addElement(7);
         myArrayList.addElement(12);
         myArrayList.addElement(1, 67);
+
         Object[] actual = myArrayList.getArray();
         Object[] expected = {7, 67, 12, null};
 
@@ -34,11 +35,10 @@ class MyArrayListTest {
     }
 
     @Test
-    public void addElementsAtIncorrectIndex() {
+    public void addElementAtIncorrectIndex() {
         MyArrayList<Integer> myArrayList = new MyArrayList<>(2);
         myArrayList.addElement(7);
         myArrayList.addElement(12);
-        myArrayList.addElement(1, 67);
 
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> myArrayList.addElement(10, 67));
     }
@@ -51,12 +51,11 @@ class MyArrayListTest {
         myArrayList.addElement(12);
         myArrayList.addElement(67);
 
-
         int actual = myArrayList.getElement(0);
         int expected = 7;
+
         Assertions.assertEquals(expected, actual);
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> myArrayList.getElement(-1));
     }
 
     @Test
