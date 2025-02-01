@@ -119,6 +119,9 @@ public class MyArrayList<T> implements MyListInterface<T> {
     }
 
     public void setElement(int index, T element) {
+        if (index>numberOfElements || index<0){
+            throw new IndexOutOfBoundsException("Index is bigger/less than length of array");
+        }
         array[index] = element;
     }
 
