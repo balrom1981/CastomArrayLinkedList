@@ -219,4 +219,16 @@ public class MyLinkedList<T> implements MyListInterface<T>{
     public int hashCode() {
         return Objects.hash(head, tail, numberOfElements);
     }
+
+    public MyNode<T> getHead() {
+        return head;
+    }
+
+    public MyNode<T> getTail() {
+        return tail;
+    }
+
+    public int getNumberOfElements() {
+        return numberOfElements;
+    }
 }
