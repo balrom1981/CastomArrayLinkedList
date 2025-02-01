@@ -2,6 +2,7 @@ package ru.balrom;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class MyLinkedList<T> implements MyListInterface<T>{
     private MyNode<T> head;
@@ -204,5 +205,18 @@ public class MyLinkedList<T> implements MyListInterface<T>{
                 count++;
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyLinkedList<?> that = (MyLinkedList<?>) o;
+        return numberOfElements == that.numberOfElements && Objects.equals(head, that.head) && Objects.equals(tail, that.tail);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, tail, numberOfElements);
     }
 }
