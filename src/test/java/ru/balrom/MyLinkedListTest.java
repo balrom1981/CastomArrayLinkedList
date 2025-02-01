@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 
 class MyLinkedListTest<T> {
 
+    MyLinkedList<Integer> actual;
+
     @Test
     public void addElementAtCorrectIndex() {
-        MyLinkedList<Integer> actual = new MyLinkedList<>();
-        actual.addElement(34);
-        actual.addElement(15);
-        actual.addElement(21);
-        actual.addElement(56);
+        actual = fillList();
 
         actual.addElement(1, 111);
 
@@ -27,7 +25,7 @@ class MyLinkedListTest<T> {
 
     @Test
     public void addElementAtIncorrectIndex() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> actual.addElement(7, 111));
     }
@@ -35,7 +33,7 @@ class MyLinkedListTest<T> {
 
     @Test
     public void getElementFromCorrectIndex() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         String actualElement = actual.getElement(1).toString();
         String expectedElement = "15";
@@ -45,14 +43,14 @@ class MyLinkedListTest<T> {
 
     @Test
     public void getElementFromIncorrectIndex() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> actual.getElement(45));
     }
 
     @Test
     public void removeCorrectElement() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         actual.removeElement(new Integer(21));
 
@@ -66,14 +64,14 @@ class MyLinkedListTest<T> {
 
     @Test
     public void removeElementFromIncorrectIndex() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> actual.removeElement(45));
     }
 
     @Test
     public void removeElementFromCorrectIndex() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
 
         actual.removeElement(2);
 
@@ -87,7 +85,7 @@ class MyLinkedListTest<T> {
 
     @Test
     public void sortArrayInNaturalOrder() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
         actual.sort();
 
         MyLinkedList<Integer> expected = new MyLinkedList<>();
@@ -101,7 +99,7 @@ class MyLinkedListTest<T> {
 
     @Test
     public void sortArrayInNotNaturalOrder() {
-        MyLinkedList<Integer> actual = fillList();
+        actual = fillList();
         actual.sort((x,y) -> y-x);
 
         MyLinkedList<Integer> expected = new MyLinkedList<>();
