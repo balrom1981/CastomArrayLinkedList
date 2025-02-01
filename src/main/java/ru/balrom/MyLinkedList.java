@@ -16,6 +16,7 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         numberOfElements = 0;
     }
 
+    /* Добавление элемента*/
     @Override
     public void addElement(T element) {
         if (size() == 0) {
@@ -29,6 +30,7 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         numberOfElements++;
     }
 
+    /* Добавление элемента по индексу*/
     @Override
     public void addElement(int index, T element) {
         if (index > size() || index < 0) {
@@ -55,6 +57,7 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         }
     }
 
+    /* Добавление элемента в начало*/
     public void addFirstElement(T element) {
         if (size() == 0) {
             tail = new MyNode<T>(element, null, null);
@@ -66,10 +69,12 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         numberOfElements++;
     }
 
+    /* Добавление элемента в конец*/
     public void addLastElement(T element) {
         addElement(element);
     }
 
+    /* Получение элемента по индексу*/
     @Override
     public T getElement(int index) {
         if (index > size() || index < 0) {
@@ -83,6 +88,8 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         }
         return current.val;
     }
+
+    /* Получение первого элемента*/
     public T getFirstElement() {
         if (size() == 0) {
             throw new NullPointerException("MyLinkedList is empty");
@@ -90,6 +97,7 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         return (T) head.val;
     }
 
+    /* Получение последнего элемента*/
     public T getLastElement() {
         if (size() == 0) {
             throw new NullPointerException("MyLinkedList is empty");
@@ -97,6 +105,7 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         return (T) tail.val;
     }
 
+    /* Удаление элемента*/
     @Override
     public boolean removeElement(T element) {
         boolean result = false;
@@ -130,6 +139,8 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         return result;
     }
 
+
+    /* Удаление элемента по индексу*/
     @Override
     public boolean removeElement(int index) {
         if (index > size() || index < 0) {
@@ -139,6 +150,8 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         return removeElement(element);
     }
 
+
+    /* Очистка листа*/
     @Override
     public void clean() {
         if (size() == 0) {
@@ -155,11 +168,13 @@ public class MyLinkedList<T> implements MyListInterface<T>{
         }
     }
 
+    /* Получение размера листа*/
     @Override
     public int size() {
         return numberOfElements;
     }
 
+    /* Сортировка в натуральном порядке*/
     @Override
     public void sort() {
         T[] array = (T[]) new Object[numberOfElements];
@@ -177,6 +192,8 @@ public class MyLinkedList<T> implements MyListInterface<T>{
             addElement(t);
         }
     }
+
+    /* Сортировка в заданном порядке*/
     @Override
     public void sort(Comparator<T> comparator) {
         T[] array = (T[]) new Object[numberOfElements];
@@ -193,6 +210,8 @@ public class MyLinkedList<T> implements MyListInterface<T>{
             addElement(t);
         }
     }
+
+    /* Вывод на кран значений элементов листа*/
     public void printLinkedList() {
         if (size() == 0) {
             throw new NullPointerException("MyLinkedList is empty");

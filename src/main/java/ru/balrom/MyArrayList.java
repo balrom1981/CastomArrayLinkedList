@@ -24,6 +24,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
     }
 
 
+    /* Добавление элемента*/
     @Override
     public void addElement(T element) {
         if (numberOfElements == size) {
@@ -33,6 +34,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         numberOfElements++;
     }
 
+    /* Добавление элемента по индексу*/
     @Override
     public void addElement(int index, T element) {
         if (index > numberOfElements || index < 0) {
@@ -50,6 +52,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         numberOfElements++;
     }
 
+    /* Получение элемента по индексу*/
     @Override
     public T getElement(int index) {
         if (index > numberOfElements || index < 0) {
@@ -58,6 +61,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         return (T) array[index];
     }
 
+    /* Удаление элемента*/
     @Override
     public boolean removeElement(T element) {
         int index = -1;
@@ -73,6 +77,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         return false;
     }
 
+    /* Удаление элемента по индексу*/
     @Override
     public boolean removeElement(int index) {
         if (index >= size || index < 0) {
@@ -83,16 +88,21 @@ public class MyArrayList<T> implements MyListInterface<T> {
         return true;
     }
 
+    /* Очистка листа*/
     @Override
     public void clean() {
         Arrays.fill(array, null);
     }
 
+
+    /* Получение размера листа*/
     @Override
     public int size() {
         return size;
     }
 
+
+    /* Сортировка в натуральном порядке*/
     @Override
     public void sort() {
         if (size == numberOfElements) {
@@ -103,6 +113,8 @@ public class MyArrayList<T> implements MyListInterface<T> {
         }
     }
 
+
+    /* Сортировка в заданном порядке*/
     @Override
     public void sort(Comparator<T> comparator) {
         if (size == numberOfElements) {
@@ -113,11 +125,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         }
     }
 
-    private void resizeArray() {
-        size *= 2;
-        array = Arrays.copyOf(array, size);
-    }
-
+    /* Вставка элемента по индексу*/
     public void setElement(int index, T element) {
         if (index>numberOfElements || index<0){
             throw new IndexOutOfBoundsException("Index is bigger/less than length of array");
@@ -125,6 +133,7 @@ public class MyArrayList<T> implements MyListInterface<T> {
         array[index] = element;
     }
 
+    /* Получение индекса элемента*/
     public int indexOf(T element) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(element)) {
@@ -134,6 +143,10 @@ public class MyArrayList<T> implements MyListInterface<T> {
         return -1;
     }
 
+    private void resizeArray() {
+        size *= 2;
+        array = Arrays.copyOf(array, size);
+    }
     private void shiftRight(int index) {
         Object[] newArray = new Object[array.length];
         System.arraycopy(array, 0, newArray, 0, index);
